@@ -25,7 +25,7 @@ That last part is the point. The app is the target, not the showpiece. And since
 
 The tracker is a small Flask app in Python with two halves. The public half lets anyone look up a shipment, and the staff half sits behind a login. Underneath, it quietly carries a considerable amount of security thinking: parameterised database queries, a CSRF token on every form, hashed passwords, a login that gives nothing away, strict rules for uploads, automatic output escaping in the templates, security headers on every response, careful logging, and a refusal to start in production with its placeholder secret key. Each of those exists to make a specific attack harder, and I'll point out which as we go.
 
-![Northgate Homepage](/joyce-sec/static/images/northgate_homepage.png)
+![Northgate Homepage](/images/northgate_homepage.png)
 
 ## Part 1: The public half
 
@@ -35,7 +35,7 @@ Anyone can type in a tracking code and see a shipment's route and status. It sho
 
 Behind a login, dispatchers can register shipments, update their status, upload a manifest for each one, and download it again.
 
-![Northgate Staff Page](/joyce-sec/static/images/northgate_staffpage.png)
+![Northgate Staff Page](/images/northgate_staffpage.png)
 
 ## How a request travels through it
 
@@ -57,7 +57,7 @@ Imagine a dispatcher logged in to Northgate who opens a sketchy tab that quietly
 
 If a username doesn't exist, the app checks the password against a fake hash anyway. Otherwise, real usernames would answer slightly slower than invented ones, because only they trigger the slow password check, and an attacker could time the difference to build a list of valid accounts. The app also gives the same vague error either way, and starts a fresh session at login to prevent session fixation.
 
-![Failed Login](/joyce-sec/static/images/northgate_incorrect_login.png)
+![Failed Login](/images/northgate_incorrect_login.png)
 
 ### 4. Random names for uploaded files
 

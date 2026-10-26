@@ -1,5 +1,5 @@
 +++ 
-draft = true
+draft = false
 date = 2026-10-26T12:56:11+01:00
 title = "Meet the Northgate Tracker: The App I'm About to Put in Danger"
 description = ""

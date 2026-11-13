@@ -17,6 +17,8 @@ With the server finally running, I did something I had been looking forward to f
 
 From my browser, I opened the public tracking page, logged in through the staff login, and uploaded and downloaded a manifest. Everything worked, which is a deeply suspicious feeling after the week I'd had.
 
+![Logging In as Staff](/images/staff-login.png)
+
 ## Proving the upload is not on the server
 
 The upload is meant to be stored in an S3 bucket and not on the server's own disk, and in security you do not take "meant to be" for an answer. First I checked in the AWS console, where I could see my file sitting in the bucket. Then I checked from the command line, because the console is a screenshot and the terminal is evidence.
@@ -31,9 +33,11 @@ After that, this worked straight away:
 
 There was my manifest, in S3, exactly where it should be. It matters because a server can be destroyed and replaced at any moment, so anything that lives only on its disk disappears with it.
 
+![Manifest Uploaded On s3](/images/s3-manifests.png)
+
 ## Reading the app's security log
 
-I also read the app's security log, which records things like logins and what happened around them. A log is only useful if someone reads it, so I am trying to make that a habit and not a decoration.
+I also read the app's security log, which records things like logins and what happened around them. A log is only useful if someone reads it, so I am trying to make that a habit and not a decoration. 
 
 ## The weakness I found on purpose
 
